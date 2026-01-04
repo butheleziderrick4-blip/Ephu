@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBER-ID 2077 ULTIMATE | Advanced ID Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Ubuntu+Mono&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00f3ff;
+      --secondary: #ff00ff;
+      --bg: #0a0a12;
+      --panel: rgba(10, 10, 18, 0.9);
+      --text: #e0e0ff;
+      --accent: #ff9900;
+      --matrix: #00ff41;
+      --shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+      --valid: #00ff88;
+      --error: #ff5a5f;
+      --tiktok: #fe2c55;
+      --tiktok-blue: #25f4ee;
+      --tiktok-dark: #121212;
+      --tiktok-light: #1f1f1f;
+      --tiktok-text: #fff;
+      --bot-active: #ff0000;
+      --copied: #25f4ee;
+      --export: #9c27b0;
+    }
+
+    [data-theme="light"] {
+      --primary: #0066ff;
+      --secondary: #ff0066;
+      --bg: #f0f0ff;
+      --panel: rgba(240, 240, 255, 0.9);
+      --text: #0a0a12;
+      --matrix: #0099ff;
+      --valid: #00aa55;
+      --error: #cc0000;
+      --tiktok: #fe2c55;
+      --tiktok-blue: #25f4ee;
+      --tiktok-dark: #f8f8f8;
+      --tiktok-light: #ffffff;
+      --tiktok-text: #121212;
+      --bot-active: #ff0000;
+      --copied: #25f4ee;
+      --export: #9c27b0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 10px;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, var(--tiktok-blue) 0%, transparent 0.2%),
+        radial-gradient(circle at 30% 70%, var(--tiktok) 0%, transparent 0.2%),
+        radial-gradient(circle at 90% 40%, var(--secondary) 0%, transparent 0.2%);
+      background-size: 120px 120px;
+    }
+
+    .tiktok-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .tiktok-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .tiktok-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--tiktok-blue), var(--tiktok));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin-bottom: 5px;
+      position: relative;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .tiktok-logo::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--tiktok-blue), var(--tiktok));
+    }
+
+    .tiktok-subtitle {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      text-align: center;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    .tiktok-card {
+      background: var(--tiktok-dark);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    .tiktok-card-header {
+      background: var(--tiktok-light);
+      padding: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tiktok-card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiktok-card-title-icon {
+      font-size: 1.3rem;
+      color: var(--tiktok);
+    }
+
+    .tiktok-card-content {
+      padding: 15px;
+    }
+
+    .tiktok-tabs {
+      display: flex;
+      justify-content: space-around;
+      padding: 0;
+      margin-bottom: 15px;
+      background: var(--tiktok-light);
+      border-radius: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tiktok-tab-btn {
+      flex: 1;
+      padding: 12px 0;
+      text-align: center;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .tiktok-tab-btn.active {
+      color: #fff;
+    }
+
+    .tiktok-tab-slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 33.33%;
+      background: linear-gradient(to right, var(--tiktok), var(--tiktok));
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+
+    .tiktok-tab-content {
+      display: none;
+      animation: slideUp 0.3s ease;
+    }
+
+    .tiktok-tab-content.active {
+      display: block;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tiktok-input-group {
+      margin-bottom: 15px;
+    }
+
+    .tiktok-input-wrapper {
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .tiktok-input {
+      width: 100%;
+      padding: 14px 15px;
+      padding-left: 45px;
+      background: var(--tiktok-light);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--tiktok-text);
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+
+    .tiktok-input:focus {
+      border-color: var(--tiktok);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(254, 44, 85, 0.2);
+    }
+
+    .tiktok-input-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--tiktok);
+      font-size: 1.2rem;
+    }
+
+    .tiktok-select {
+      appearance: none;
+      width: 100%;
+      padding: 14px 15px;
+      padding-left: 45px;
+      background: var(--tiktok-light) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 15px center;
+      background-size: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--tiktok-text);
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+
+    .tiktok-select:focus {
+      border-color: var(--tiktok);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(254, 44, 85, 0.2);
+    }
+
+    .tiktok-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .tiktok-row .tiktok-input-wrapper {
+      flex: 1;
+    }
+
+    .tiktok-button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(to right, var(--tiktok-blue), var(--tiktok));
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      letter-spacing: 1px;
+    }
+
+    .tiktok-button:active {
+      transform: scale(0.98);
+    }
+
+    .tiktok-button-icon {
+      font-size: 1.3rem;
+    }
+
+    .tiktok-button.bot-active {
+      background: linear-gradient(to right, var(--bot-active), #ff4444);
+      animation: pulse 1.5s infinite;
+    }
+
+    .tiktok-button.export {
+      background: linear-gradient(to right, var(--export), #ba68c8);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+    }
+
+    .tiktok-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 15px 0;
+    }
+
+    .tiktok-stat {
+      background: var(--tiktok-light);
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .tiktok-stat-value {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--tiktok);
+      margin-bottom: 3px;
+    }
+
+    .tiktok-stat-label {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tiktok-id-list {
+      max-height: 300px;
+      overflow-y: auto;
+      border-radius: 8px;
+      margin-top: 15px;
+      position: relative;
+      background: var(--tiktok-light);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 5px;
+    }
+
+    .tiktok-id-list::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .tiktok-id-list::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+    }
+
+    .tiktok-id-list::-webkit-scrollbar-thumb {
+      background: var(--tiktok);
+      border-radius: 3px;
+    }
+
+    .tiktok-id-item {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--tiktok-dark);
+      margin-bottom: 8px;
+      border-radius: 8px;
+      animation: fadeIn 0.5s;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tiktok-id-item.valid {
+      border-left: 4px solid var(--valid);
+    }
+
+    .tiktok-id-item.dup {
+      border-left: 4px solid var(--error);
+      animation: shake 0.5s;
+    }
+
+    .tiktok-id-item.copied {
+      background: rgba(37, 244, 238, 0.15);
+      border-left: 4px solid var(--copied);
+      box-shadow: 0 0 10px rgba(37, 244, 238, 0.2);
+    }
+
+    .tiktok-id-item.favorite {
+      background: rgba(255, 193, 7, 0.15);
+      border-left: 4px solid #ffc107;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+
+    .tiktok-id-text {
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tiktok-id-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .tiktok-id-action {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--tiktok-text);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tiktok-id-action:hover {
+      background: var(--tiktok);
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .tiktok-id-action.copied {
+      background: var(--copied);
+      color: #fff;
+    }
+
+    .tiktok-id-action.favorite-btn {
+      background: rgba(255, 193, 7, 0.2);
+      color: #ffc107;
+    }
+
+    .tiktok-id-action.favorite-btn.active {
+      background: #ffc107;
+      color: #000;
+    }
+
+    .tiktok-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--tiktok);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 500;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+    }
+
+    .tiktok-toast.show {
+      opacity: 1;
+    }
+
+    .tiktok-theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--tiktok-light);
+      color: var(--tiktok);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      font-size: 1.3rem;
+      transition: all 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .tiktok-theme-toggle:active {
+      transform: scale(0.9);
+    }
+
+    .tiktok-result {
+      background: var(--tiktok-light);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 15px;
+      white-space: pre-wrap;
+      font-family: 'Ubuntu Mono', monospace;
+      border-left: 4px solid var(--tiktok);
+      min-height: 120px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .tiktok-result.valid {
+      border-left-color: var(--valid);
+    }
+
+    .tiktok-result.error {
+      border-left-color: var(--error);
+    }
+
+    .tiktok-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+    }
+
+    .tiktok-spinner {
+      width: 35px;
+      height: 35px;
+      border: 4px solid var(--tiktok-light);
+      border-radius: 50%;
+      border-top-color: var(--tiktok);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .ai-status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--tiktok-blue);
+      padding: 8px 12px;
+      background: rgba(37, 244, 238, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--tiktok-blue);
+    }
+
+    .ai-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--tiktok-blue);
+      animation: pulse 1.5s infinite;
+    }
+
+    .speed-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .speed-control label {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .speed-control select {
+      background: var(--tiktok-light);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: var(--tiktok-text);
+      font-size: 0.85rem;
+    }
+
+    .export-options {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .filter-options {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 6px 12px;
+      background: var(--tiktok-light);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      color: var(--tiktok-text);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn.active {
+      background: var(--tiktok);
+      color: #fff;
+    }
+
+    .favorites-section {
+      margin-top: 15px;
+      display: none;
+    }
+
+    .favorites-section.active {
+      display: block;
+    }
+
+    /* AI Chatbot Styles */
+    .chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 350px;
+      background: var(--tiktok-dark);
+      border-radius: 12px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+      z-index: 1000;
+      overflow: hidden;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      border: 1px solid var(--tiktok);
+    }
+    
+    .chatbot-container.active {
+      transform: translateY(0);
+    }
+    
+    .chatbot-header {
+      background: var(--tiktok);
+      color: white;
+      padding: 12px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .chatbot-messages {
+      height: 300px;
+      overflow-y: auto;
+      padding: 15px;
+      background: var(--tiktok-light);
+    }
+    
+    .message {
+      margin-bottom: 15px;
+      max-width: 80%;
+      padding: 10px 15px;
+      border-radius: 18px;
+      line-height: 1.4;
+      position: relative;
+    }
+    
+    .bot-message {
+      background: var(--tiktok-dark);
+      color: var(--text);
+      border-bottom-left-radius: 5px;
+      align-self: flex-start;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .user-message {
+      background: var(--tiktok);
+      color: white;
+      border-bottom-right-radius: 5px;
+      margin-left: auto;
+    }
+    
+    .chatbot-input {
+      display: flex;
+      padding: 10px;
+      background: var(--tiktok-light);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .chatbot-input input {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      background: var(--tiktok-dark);
+      color: var(--text);
+      outline: none;
+    }
+    
+    .chatbot-input button {
+      background: var(--tiktok);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      margin-left: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .chatbot-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: var(--tiktok);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1001;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .typing span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--tiktok-text);
+      border-radius: 50%;
+      margin: 0 2px;
+      animation: typing 1.4s infinite ease-in-out;
+    }
+
+    .typing span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .typing span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-5px); }
+    }
+
+    /* Media Queries */
+    @media (max-width: 600px) {
+      .tiktok-row {
+        flex-direction: column;
+      }
+      
+      .tiktok-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .export-options {
+        flex-direction: column;
+      }
+
+      .filter-options {
+        flex-direction: column;
+      }
+      
+      .chatbot-container {
+        width: 90%;
+        right: 5%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Theme toggle -->
+  <button class="tiktok-theme-toggle" id="themeToggle">☀️</button>
+
+  <div class="tiktok-container">
+    <div class="tiktok-header">
+      <div class="tiktok-logo">CYBER-ID 2077 ULTIMATE</div>
+    </div>
+    <div class="tiktok-subtitle">Advanced SA ID Generator + SASSA Check</div>
+
+    <div class="tiktok-tabs">
+      <div class="tiktok-tab-btn active" data-tab="generator">Generator</div>
+      <div class="tiktok-tab-btn" data-tab="sassa">SASSA</div>
+      <div class="tiktok-tab-btn" data-tab="favorites">Favorites</div>
+      <div class="tiktok-tab-slider"></div>
+    </div>
+
+    <!-- ID Generator Tab -->
+    <div id="generator" class="tiktok-tab-content active">
+      <div class="tiktok-card">
+        <div class="tiktok-card-header">
+          <div class="tiktok-card-title">
+            <span class="tiktok-card-title-icon">🆔</span>
+            ID Generator PRO
+          </div>
+          <div class="tiktok-card-verified">✓ Premium</div>
+        </div>
+        
+        <div class="tiktok-card-content">
+          <div class="tiktok-input-group">
+            <div class="tiktok-row">
+              <div class="tiktok-input-wrapper">
+                <span class="tiktok-input-icon">📅</span>
+                <select id="year" class="tiktok-select">
+                  <option value="">Year</option>
+                </select>
+              </div>
+              <div class="tiktok-input-wrapper">
+                <span class="tiktok-input-icon">📆</span>
+                <select id="month" class="tiktok-select">
+                  <option value="">Month</option>
+                </select>
+              </div>
+              <div class="tiktok-input-wrapper">
+                <span class="tiktok-input-icon">📅</span>
+                <select id="day" class="tiktok-select">
+                  <option value="">Day</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="tiktok-row">
+              <div class="tiktok-input-wrapper">
+                <span class="tiktok-input-icon">👤</span>
+                <select id="gender" class="tiktok-select">
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+                  <option value="random">Random</option>
+                </select>
+              </div>
+              <div class="tiktok-input-wrapper">
+                <span class="tiktok-input-icon">📍</span>
+                <select id="province" class="tiktok-select">
+                  <option value="random">Random Province</option>
+                  <option value="0">Western Cape</option>
+                  <option value="1">Eastern Cape</option>
+                  <option value="2">Northern Cape</option>
+                  <option value="3">Free State</option>
+                  <option value="4">KwaZulu-Natal</option>
+                  <option value="5">North West</option>
+                  <option value="6">Gauteng</option>
+                  <option value="7">Mpumalanga</option>
+                  <option value="8">Limpopo</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="tiktok-row">
+              <div class="tiktok-input-wrapper">
+                <span class="tiktok-input-icon">#️⃣</span>
+                <select id="count" class="tiktok-select">
+                  <option value="1">1 ID</option>
+                  <option value="5">5 IDs</option>
+                  <option value="10">10 IDs</option>
+                  <option value="50">50 IDs</option>
+                  <option value="100">100 IDs</option>
+                  <option value="500">500 IDs</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tiktok-row">
+            <button id="genBtn" class="tiktok-button">
+              <span>Generate</span>
+              <span class="tiktok-button-icon">⚡</span>
+            </button>
+            <button id="botBtn" class="tiktok-button">
+              <span>Auto-Generate</span>
+              <span class="tiktok-button-icon">🤖</span>
+            </button>
+          </div>
+
+          <div class="speed-control">
+            <label for="botSpeed">Bot Speed:</label>
+            <select id="botSpeed">
+              <option value="1000">Slow (1/sec)</option>
+              <option value="500" selected>Medium (2/sec)</option>
+              <option value="250">Fast (4/sec)</option>
+              <option value="100">Turbo (10/sec)</option>
+            </select>
+          </div>
+          
+          <div class="tiktok-stats">
+            <div class="tiktok-stat">
+              <div class="tiktok-stat-value" id="total">0</div>
+              <div class="tiktok-stat-label">Total</div>
+            </div>
+            <div class="tiktok-stat">
+              <div class="tiktok-stat-value" id="valid">0</div>
+              <div class="tiktok-stat-label">Valid</div>
+            </div>
+            <div class="tiktok-stat">
+              <div class="tiktok-stat-value" id="dupes">0</div>
+              <div class="tiktok-stat-label">Dupes</div>
+            </div>
+            <div class="tiktok-stat">
+              <div class="tiktok-stat-value" id="favoritesCount">0</div>
+              <div class="tiktok-stat-label">Favorites</div>
+            </div>
+          </div>
+
+          <div class="filter-options">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="valid">Valid Only</button>
+            <button class="filter-btn" data-filter="duplicates">Duplicates</button>
+            <button class="filter-btn" data-filter="favorites">Favorites</button>
+          </div>
+          
+          <div class="tiktok-id-list" id="idList"></div>
+          
+          <div id="aiStatus" class="ai-status" style="display: none;">
+            <div class="ai-dot"></div>
+            <span>AI Bot is generating IDs...</span>
+          </div>
+
+          <div class="export-options">
+            <button id="exportCSV" class="tiktok-button export">
+              <span>Export as CSV</span>
+              <span class="tiktok-button-icon">📊</span>
+            </button>
+            <button id="exportJSON" class="tiktok-button export">
+              <span>Export as JSON</span>
+              <span class="tiktok-button-icon">🔖</span>
+            </button>
+            <button id="clearAll" class="tiktok-button" style="background: var(--error);">
+              <span>Clear All</span>
+              <span class="tiktok-button-icon">🗑️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SASSA Check Tab -->
+    <div id="sassa" class="tiktok-tab-content">
+      <div class="tiktok-card">
+        <div class="tiktok-card-header">
+          <div class="tiktok-card-title">
+            <span class="tiktok-card-title-icon">💰</span>
+            SASSA Status Check PRO
+          </div>
+          <div class="tiktok-card-verified">✓ Verified</div>
+        </div>
+        
+        <div class="tiktok-card-content">
+          <div class="tiktok-input-group">
+            <div class="tiktok-input-wrapper">
+              <span class="tiktok-input-icon">🆔</span>
+              <input type="text" id="sassaID" class="tiktok-input" placeholder="Enter ID Number" maxlength="13">
+            </div>
+            
+            <div class="tiktok-input-wrapper">
+              <span class="tiktok-input-icon">📱</span>
+              <input type="tel" id="sassaPhone" class="tiktok-input" placeholder="Enter Phone Number">
+            </div>
+          </div>
+          
+          <button id="sassaBtn" class="tiktok-button">
+            <span>Check Status</span>
+            <span class="tiktok-button-icon">🔍</span>
+          </button>
+          
+          <div id="sassaResult" class="tiktok-result">
+            Enter your ID and phone number to check SASSA grant status
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Favorites Tab -->
+    <div id="favorites" class="tiktok-tab-content">
+      <div class="tiktok-card">
+        <div class="tiktok-card-header">
+          <div class="tiktok-card-title">
+            <span class="tiktok-card-title-icon">⭐</span>
+            Favorite IDs
+          </div>
+          <div class="tiktok-card-verified">✓ Saved</div>
+        </div>
+        
+        <div class="tiktok-card-content">
+          <div class="tiktok-id-list" id="favoritesList">
+            <div style="text-align: center; padding: 20px; opacity: 0.7;">
+              No favorite IDs saved yet
+            </div>
+          </div>
+
+          <div class="export-options">
+            <button id="exportFavoritesCSV" class="tiktok-button export">
+              <span>Export Favorites CSV</span>
+              <span class="tiktok-button-icon">📊</span>
+            </button>
+            <button id="exportFavoritesJSON" class="tiktok-button export">
+              <span>Export Favorites JSON</span>
+              <span class="tiktok-button-icon">🔖</span>
+            </button>
+            <button id="clearFavorites" class="tiktok-button" style="background: var(--error);">
+              <span>Clear Favorites</span>
+              <span class="tiktok-button-icon">🗑️</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tiktok-toast" id="toast"></div>
+
+  <!-- AI Chatbot Interface -->
+  <div class="chatbot-toggle" id="chatbotToggle">
+    <span style="font-size: 1.5rem;">🤖</span>
+  </div>
+  
+  <div class="chatbot-container" id="chatbotContainer">
+    <div class="chatbot-header" id="chatbotHeader">
+      <h3>Cyber ID Assistant</h3>
+      <span id="chatbotStatus">Online</span>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="message bot-message">
+        Hello! I'm your Cyber ID assistant. How can I help you with ID generation or verification today?
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatbotInput" placeholder="Ask me anything about IDs...">
+      <button id="chatbotSend">➤</button>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      showToast(`Switched to ${newTheme} mode`);
+    });
+
+    // Toast notification
+    const toast = document.getElementById('toast');
+    function showToast(message, emoji = '✓') {
+      toast.innerHTML = `<span>${emoji}</span> ${message}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+
+    // Tab switching
+    const tabBtns = document.querySelectorAll('.tiktok-tab-btn');
+    const tabContents = document.querySelectorAll('.tiktok-tab-content');
+    const tabSlider = document.querySelector('.tiktok-tab-slider');
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active tab
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Update tab content
+        const tabId = btn.getAttribute('data-tab');
+        tabContents.forEach(content => {
+          content.classList.remove('active');
+          if(content.id === tabId) content.classList.add('active');
+        });
+        
+        // Move slider
+        const tabIndex = Array.from(tabBtns).indexOf(btn);
+        tabSlider.style.transform = `translateX(${tabIndex * 100}%)`;
+      });
+    });
+
+    // ID Generator Logic
+    const yearEl = document.getElementById('year');
+    const monthEl = document.getElementById('month');
+    const dayEl = document.getElementById('day');
+    const genderEl = document.getElementById('gender');
+    const provEl = document.getElementById('province');
+    const countEl = document.getElementById('count');
+    const genBtn = document.getElementById('genBtn');
+    const botBtn = document.getElementById('botBtn');
+    const botSpeedEl = document.getElementById('botSpeed');
+    const idList = document.getElementById('idList');
+    const favoritesList = document.getElementById('favoritesList');
+    const totalEl = document.getElementById('total');
+    const validEl = document.getElementById('valid');
+    const dupesEl = document.getElementById('dupes');
+    const favoritesCountEl = document.getElementById('favoritesCount');
+    const aiStatus = document.getElementById('aiStatus');
+    const exportCSV = document.getElementById('exportCSV');
+    const exportJSON = document.getElementById('exportJSON');
+    const exportFavoritesCSV = document.getElementById('exportFavoritesCSV');
+    const exportFavoritesJSON = document.getElementById('exportFavoritesJSON');
+    const clearAll = document.getElementById('clearAll');
+    const clearFavorites = document.getElementById('clearFavorites');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    let seen = new Set();
+    let stats = { total: 0, valid: 0, dupes: 0, favorites: 0 };
+    let botInterval = null;
+    let isBotRunning = false;
+    let currentFilter = 'all';
+    let favorites = JSON.parse(localStorage.getItem('cyber-id-favorites')) || [];
+
+    // Initialize date dropdowns
+    (function initDate() {
+      // Years (1980-2003)
+      for (let y = 2003; y >= 1980; y--) {
+        const option = document.createElement('option');
+        option.value = String(y).slice(-2);
+        option.textContent = y;
+        yearEl.appendChild(option);
+      }
+      
+      // Months
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      months.forEach((month, index) => {
+        const option = document.createElement('option');
+        option.value = String(index + 1).padStart(2, '0');
+        option.textContent = month;
+        monthEl.appendChild(option);
+      });
+
+      // Update favorites count
+      updateFavoritesCount();
+      renderFavorites();
+    })();
+
+    // Update days dropdown based on month/year
+    function updateDays() {
+      const year = parseInt(yearEl.value);
+      const month = parseInt(monthEl.value);
+      
+      dayEl.innerHTML = '<option value="">Day</option>';
+      
+      if (!year || !month) return;
+      
+      const fullYear = year < 50 ? 2000 + year : 1900 + year;
+      const daysInMonth = new Date(fullYear, month, 0).getDate();
+      
+      for (let day = 1; day <= daysInMonth; day++) {
+        const option = document.createElement('option');
+        option.value = String(day).padStart(2, '0');
+        option.textContent = day;
+        dayEl.appendChild(option);
+      }
+    }
+    
+    yearEl.addEventListener('change', updateDays);
+    monthEl.addEventListener('change', updateDays);
+
+    // Luhn algorithm for checksum
+    function luhnChecksum(base) {
+      let sum = 0;
+      
+      for (let i = 0; i < base.length; i++) {
+        let digit = parseInt(base[i]);
+        
+        if ((i + 1) % 2 === 0) {
+          digit *= 2;
+          if (digit > 9) digit -= 9;
+        }
+        
+        sum += digit;
+      }
+      
+      return (10 - (sum % 10)) % 10;
+    }
+
+    // Generate a single SA ID
+    function generateID() {
+      let year, month, day, genderDigit, provinceCode;
+      
+      // Handle random year if not specified
+      if (!yearEl.value) {
+        const randomYear = Math.floor(Math.random() * (2003 - 1980 + 1)) + 1980;
+        year = String(randomYear).slice(-2);
+      } else {
+        year = yearEl.value;
+      }
+      
+      // Handle random month if not specified
+      if (!monthEl.value) {
+        month = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
+      } else {
+        month = monthEl.value;
+      }
+      
+      // Handle random day if not specified
+      if (!dayEl.value) {
+        const fullYear = parseInt(year) < 50 ? 2000 + parseInt(year) : 1900 + parseInt(year);
+        const daysInMonth = new Date(fullYear, parseInt(month), 0).getDate();
+        day = String(Math.floor(Math.random() * daysInMonth) + 1).padStart(2, '0');
+      } else {
+        day = dayEl.value;
+      }
+      
+      // Handle random gender
+      if (genderEl.value === 'random') {
+        genderDigit = Math.random() > 0.5 ? '5' : '0';
+      } else {
+        genderDigit = genderEl.value === 'male' ? '5' : '0';
+      }
+      
+      // Handle random province
+      if (provEl.value === 'random') {
+        provinceCode = String(Math.floor(Math.random() * 9));
+      } else {
+        provinceCode = provEl.value;
+      }
+      
+      // Generate random sequence (0000-9999)
+      const sequence = String(Math.floor(Math.random() * 10000)).padStart(4, '0');
+      
+      // Construct partial ID (without checksum)
+      const partialID = year + month + day + genderDigit + sequence.slice(1) + provinceCode + '8';
+      
+      // Calculate checksum and return full ID
+      const checksum = luhnChecksum(partialID);
+      return partialID + checksum;
+    }
+
+    // Add ID to the list
+    function addIDToList(id) {
+      const isDuplicate = seen.has(id);
+      const isFavorite = favorites.includes(id);
+      
+      if (!isDuplicate) {
+        stats.valid++;
+        seen.add(id);
+      } else {
+        stats.dupes++;
+        showToast('Duplicate ID detected!', '⚠️');
+      }
+      
+      stats.total++;
+      
+      const idItem = document.createElement('div');
+      idItem.className = `tiktok-id-item ${isDuplicate ? 'dup' : 'valid'} ${isFavorite ? 'favorite' : ''}`;
+      idItem.dataset.id = id;
+      idItem.innerHTML = `
+        <span class="tiktok-id-text">${id}</span>
+        <div class="tiktok-id-actions">
+          <div class="tiktok-id-action favorite-btn ${isFavorite ? 'active' : ''}">${isFavorite ? '★' : '☆'}</div>
+          <div class="tiktok-id-action copy-btn">⎘</div>
+        </div>
+      `;
+      
+      // Add copy functionality
+      const copyBtn = idItem.querySelector('.copy-btn');
+      copyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(id).then(() => {
+          // Mark as copied
+          idItem.classList.add('copied');
+          copyBtn.textContent = '✓';
+          copyBtn.classList.add('copied');
+          showToast(`Copied: ${id}`, '⎘');
+          
+          // Reset after 2 seconds
+          setTimeout(() => {
+            copyBtn.textContent = '⎘';
+            copyBtn.classList.remove('copied');
+          }, 2000);
+        }).catch(err => {
+          showToast('Failed to copy', '⚠️');
+        });
+      });
+      
+      // Add favorite functionality
+      const favoriteBtn = idItem.querySelector('.favorite-btn');
+      favoriteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFavorite(id, idItem, favoriteBtn);
+      });
+      
+      // Filter the item based on current filter
+      applyFilterToItem(idItem, id);
+      
+      idList.prepend(idItem);
+      updateStats();
+    }
+
+    // Toggle favorite status
+    function toggleFavorite(id, idItem, favoriteBtn) {
+      const index = favorites.indexOf(id);
+      
+      if (index === -1) {
+        // Add to favorites
+        favorites.push(id);
+        idItem.classList.add('favorite');
+        favoriteBtn.classList.add('active');
+        favoriteBtn.textContent = '★';
+        stats.favorites++;
+        showToast('Added to favorites', '⭐');
+      } else {
+        // Remove from favorites
+        favorites.splice(index, 1);
+        idItem.classList.remove('favorite');
+        favoriteBtn.classList.remove('active');
+        favoriteBtn.textContent = '☆';
+        stats.favorites--;
+        showToast('Removed from favorites', '⭐');
+      }
+      
+      // Update favorites list
+      updateFavoritesCount();
+      renderFavorites();
+      localStorage.setItem('cyber-id-favorites', JSON.stringify(favorites));
+      
+      // Reapply filter if needed
+      if (currentFilter === 'favorites') {
+        applyFilterToItem(idItem, id);
+      }
+    }
+
+    // Update favorites count
+    function updateFavoritesCount() {
+      favoritesCountEl.textContent = favorites.length;
+    }
+
+    // Render favorites list
+    function renderFavorites() {
+      if (favorites.length === 0) {
+        favoritesList.innerHTML = '<div style="text-align: center; padding: 20px; opacity: 0.7;">No favorite IDs saved yet</div>';
+        return;
+      }
+      
+      favoritesList.innerHTML = '';
+      
+      favorites.forEach(id => {
+        const idItem = document.createElement('div');
+        idItem.className = 'tiktok-id-item valid favorite';
+        idItem.innerHTML = `
+          <span class="tiktok-id-text">${id}</span>
+          <div class="tiktok-id-actions">
+            <div class="tiktok-id-action favorite-btn active">★</div>
+            <div class="tiktok-id-action copy-btn">⎘</div>
+          </div>
+        `;
+        
+        // Add copy functionality
+        const copyBtn = idItem.querySelector('.copy-btn');
+        copyBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(id).then(() => {
+            // Mark as copied
+            idItem.classList.add('copied');
+            copyBtn.textContent = '✓';
+            copyBtn.classList.add('copied');
+            showToast(`Copied: ${id}`, '⎘');
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+              copyBtn.textContent = '⎘';
+              copyBtn.classList.remove('copied');
+            }, 2000);
+          }).catch(err => {
+            showToast('Failed to copy', '⚠️');
+          });
+        });
+        
+        // Add favorite functionality
+        const favoriteBtn = idItem.querySelector('.favorite-btn');
+        favoriteBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleFavorite(id, idItem, favoriteBtn);
+        });
+        
+        favoritesList.appendChild(idItem);
+      });
+    }
+
+    // Apply current filter to an item
+    function applyFilterToItem(item, id) {
+      const isDuplicate = seen.has(id) && item.classList.contains('dup');
+      const isFavorite = favorites.includes(id);
+      
+      switch(currentFilter) {
+        case 'all':
+          item.style.display = 'flex';
+          break;
+        case 'valid':
+          item.style.display = !isDuplicate ? 'flex' : 'none';
+          break;
+        case 'duplicates':
+          item.style.display = isDuplicate ? 'flex' : 'none';
+          break;
+        case 'favorites':
+          item.style.display = isFavorite ? 'flex' : 'none';
+          break;
+        default:
+          item.style.display = 'flex';
+      }
+    }
+
+    // Apply current filter to all items
+    function applyFilter() {
+      const items = idList.querySelectorAll('.tiktok-id-item');
+      items.forEach(item => {
+        const id = item.dataset.id;
+        applyFilterToItem(item, id);
+      });
+    }
+
+    // Generate IDs button handler
+    genBtn.addEventListener('click', () => {
+      if (!yearEl.value && yearEl.options[yearEl.selectedIndex].text !== 'Year') {
+        showToast('Please select year or leave blank for random', '⚠️');
+        return;
+      }
+      
+      if (!monthEl.value && monthEl.options[monthEl.selectedIndex].text !== 'Month') {
+        showToast('Please select month or leave blank for random', '⚠️');
+        return;
+      }
+      
+      if (!dayEl.value && dayEl.options[dayEl.selectedIndex].text !== 'Day') {
+        showToast('Please select day or leave blank for random', '⚠️');
+        return;
+      }
+      
+      // Reset UI and stats if it's a new generation
+      if (!isBotRunning) {
+        idList.innerHTML = '';
+        seen.clear();
+        stats = { total: 0, valid: 0, dupes: 0, favorites: favorites.length };
+        updateStats();
+      }
+      
+      const count = parseInt(countEl.value);
+      
+      // Generate IDs in batches for better performance with large numbers
+      function generateBatch(batchSize, remaining) {
+        const batchCount = Math.min(batchSize, remaining);
+        
+        for (let i = 0; i < batchCount; i++) {
+          let id;
+          let attempts = 0;
+          const maxAttempts = 100; // Prevent infinite loops
+          
+          // Keep generating until we get a unique ID or hit max attempts
+          do {
+            id = generateID();
+            attempts++;
+          } while (seen.has(id) && attempts < maxAttempts);
+          
+          addIDToList(id);
+        }
+        
+        // If more IDs to generate, schedule next batch
+        remaining -= batchCount;
+        if (remaining > 0) {
+          setTimeout(() => generateBatch(batchSize, remaining), 0);
+        } else {
+          showToast(`Generated ${count} ID${count !== 1 ? 's' : ''}`, '✓');
+          genBtn.disabled = false;
+        }
+      }
+      
+      genBtn.disabled = true;
+      generateBatch(count <= 100 ? count : 100, count);
+    });
+
+    // Bot auto-generation
+    botBtn.addEventListener('click', () => {
+      if (!yearEl.value && yearEl.options[yearEl.selectedIndex].text !== 'Year') {
+        showToast('Please select year or leave blank for random', '⚠️');
+        return;
+      }
+      
+      if (!monthEl.value && monthEl.options[monthEl.selectedIndex].text !== 'Month') {
+        showToast('Please select month or leave blank for random', '⚠️');
+        return;
+      }
+      
+      if (!dayEl.value && dayEl.options[dayEl.selectedIndex].text !== 'Day') {
+        showToast('Please select day or leave blank for random', '⚠️');
+        return;
+      }
+      
+      if (!isBotRunning) {
+        // Start bot
+        isBotRunning = true;
+        botBtn.classList.add('bot-active');
+        botBtn.innerHTML = '<span>Stop Bot</span><span class="tiktok-button-icon">🛑</span>';
+        aiStatus.style.display = 'flex';
+        
+        // Clear existing IDs if this is a new session
+        if (stats.total === 0) {
+          idList.innerHTML = '';
+          seen.clear();
+          stats = { total: 0, valid: 0, dupes: 0, favorites: favorites.length };
+          updateStats();
+        }
+        
+        // Get bot speed
+        const speed = parseInt(botSpeedEl.value);
+        
+        // Start generating IDs at specified interval
+        botInterval = setInterval(() => {
+          const id = generateID();
+          addIDToList(id);
+        }, speed);
+        
+        showToast('Auto-generation bot started', '🤖');
+      } else {
+        // Stop bot
+        isBotRunning = false;
+        clearInterval(botInterval);
+        botBtn.classList.remove('bot-active');
+        botBtn.innerHTML = '<span>Auto-Generate</span><span class="tiktok-button-icon">🤖</span>';
+        aiStatus.style.display = 'none';
+        showToast('Auto-generation bot stopped', '🛑');
+      }
+    });
+
+    // Change bot speed
+    botSpeedEl.addEventListener('change', () => {
+      if (isBotRunning) {
+        clearInterval(botInterval);
+        const speed = parseInt(botSpeedEl.value);
+        botInterval = setInterval(() => {
+          const id = generateID();
+          addIDToList(id);
+        }, speed);
+        showToast(`Bot speed updated to ${1000/speed} IDs/sec`, '⚡');
+      }
+    });
+
+    // Update statistics display
+    function updateStats() {
+      totalEl.textContent = stats.total;
+      validEl.textContent = stats.valid;
+      dupesEl.textContent = stats.dupes;
+      favoritesCountEl.textContent = stats.favorites;
+    }
+
+    // Filter buttons
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        applyFilter();
+      });
+    });
+
+    // Export functions
+    exportCSV.addEventListener('click', () => {
+      if (stats.total === 0) {
+        showToast('No IDs to export', '⚠️');
+        return;
+      }
+      
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += "ID Number,Status,Favorite\n";
+      
+      const items = idList.querySelectorAll('.tiktok-id-item');
+      items.forEach(item => {
+        const id = item.dataset.id;
+        const isDuplicate = item.classList.contains('dup');
+        const isFavorite = favorites.includes(id);
+        
+        csvContent += `${id},${isDuplicate ? 'Duplicate' : 'Valid'},${isFavorite ? 'Yes' : 'No'}\n`;
+      });
+      
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "cyber-id-export.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      showToast('Exported as CSV', '📊');
+    });
+
+    exportJSON.addEventListener('click', () => {
+      if (stats.total === 0) {
+        showToast('No IDs to export', '⚠️');
+        return;
+      }
+      
+      const exportData = [];
+      
+      const items = idList.querySelectorAll('.tiktok-id-item');
+      items.forEach(item => {
+        const id = item.dataset.id;
+        const isDuplicate = item.classList.contains('dup');
+        const isFavorite = favorites.includes(id);
+        
+        exportData.push({
+          id: id,
+          status: isDuplicate ? 'duplicate' : 'valid',
+          favorite: isFavorite,
+          date: new Date().toISOString()
+        });
+      });
+      
+      const jsonContent = JSON.stringify(exportData, null, 2);
+      const blob = new Blob([jsonContent], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "cyber-id-export.json");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      showToast('Exported as JSON', '🔖');
+    });
+
+    exportFavoritesCSV.addEventListener('click', () => {
+      if (favorites.length === 0) {
+        showToast('No favorites to export', '⚠️');
+        return;
+      }
+      
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += "Favorite ID Number\n";
+      
+      favorites.forEach(id => {
+        csvContent += `${id}\n`;
+      });
+      
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "cyber-id-favorites.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      showToast('Exported favorites as CSV', '📊');
+    });
+
+    exportFavoritesJSON.addEventListener('click', () => {
+      if (favorites.length === 0) {
+        showToast('No favorites to export', '⚠️');
+        return;
+      }
+      
+      const exportData = {
+        count: favorites.length,
+        favorites: favorites,
+        exportedAt: new Date().toISOString()
+      };
+      
+      const jsonContent = JSON.stringify(exportData, null, 2);
+      const blob = new Blob([jsonContent], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "cyber-id-favorites.json");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      showToast('Exported favorites as JSON', '🔖');
+    });
+
+    // Clear all IDs
+    clearAll.addEventListener('click', () => {
+      if (stats.total === 0) {
+        showToast('No IDs to clear', '⚠️');
+        return;
+      }
+      
+      if (confirm('Are you sure you want to clear all generated IDs? This cannot be undone.')) {
+        idList.innerHTML = '';
+        seen.clear();
+        stats = { total: 0, valid: 0, dupes: 0, favorites: favorites.length };
+        updateStats();
+        showToast('All IDs cleared', '🗑️');
+      }
+    });
+
+    // Clear favorites
+    clearFavorites.addEventListener('click', () => {
+      if (favorites.length === 0) {
+        showToast('No favorites to clear', '⚠️');
+        return;
+      }
+      
+      if (confirm('Are you sure you want to clear all favorites? This cannot be undone.')) {
+        favorites = [];
+        localStorage.setItem('cyber-id-favorites', JSON.stringify(favorites));
+        stats.favorites = 0;
+        updateStats();
+        renderFavorites();
+        
+        // Update favorite buttons in main list
+        const favoriteItems = idList.querySelectorAll('.favorite-btn.active');
+        favoriteItems.forEach(item => {
+          item.classList.remove('active');
+          item.textContent = '☆';
+        });
+        
+        // Update favorite classes in main list
+        const favoriteDivs = idList.querySelectorAll('.favorite');
+        favoriteDivs.forEach(div => {
+          div.classList.remove('favorite');
+        });
+        
+        showToast('All favorites cleared', '🗑️');
+      }
+    });
+
+    // SASSA Check Logic
+    const sassaBtn = document.getElementById('sassaBtn');
+    const sassaID = document.getElementById('sassaID');
+    const sassaPhone = document.getElementById('sassaPhone');
+    const sassaResult = document.getElementById('sassaResult');
+    
+    sassaBtn.addEventListener('click', () => {
+      const id = sassaID.value.trim();
+      const phone = sassaPhone.value.trim();
+      
+      if (!id || !phone) {
+        sassaResult.textContent = 'Please enter both ID and phone number';
+        sassaResult.className = 'tiktok-result error';
+        return;
+      }
+      
+      if (id.length !== 13 || !/^\d+$/.test(id)) {
+        sassaResult.textContent = 'Invalid ID number format. Must be 13 digits.';
+        sassaResult.className = 'tiktok-result error';
+        return;
+      }
+      
+      if (phone.length < 10 || !/^\d+$/.test(phone)) {
+        sassaResult.textContent = 'Invalid phone number format. Must be at least 10 digits.';
+        sassaResult.className = 'tiktok-result error';
+        return;
+      }
+      
+      // Show loading state
+      sassaResult.innerHTML = '<div class="tiktok-loading"><div class="tiktok-spinner"></div></div>';
+      sassaResult.className = 'tiktok-result';
+      
+      // Simulate API call with timeout
+      setTimeout(() => {
+        // Mock response - in a real app, this would be an actual API call
+        const responses = [
+          {
+            status: 'Approved',
+            paymentDate: new Date(Date.now() + 86400000 * 3).toISOString().split('T')[0],
+            amount: 'R350.00',
+            nextPayment: new Date(Date.now() + 86400000 * 30).toISOString().split('T')[0],
+            reference: 'SASSA-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
+          },
+          {
+            status: 'Pending',
+            message: 'Your application is being processed. Check back in 3-5 working days.',
+            reference: 'SASSA-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
+          },
+          {
+            status: 'Rejected',
+            reason: 'Income above threshold',
+            appealDeadline: new Date(Date.now() + 86400000 * 14).toISOString().split('T')[0],
+            reference: 'SASSA-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0')
+          }
+        ];
+        
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        
+        let resultText = '';
+        if (randomResponse.status === 'Approved') {
+          resultText = `✅ STATUS: APPROVED\n\n`;
+          resultText += `💳 Next Payment: ${randomResponse.paymentDate}\n`;
+          resultText += `💰 Amount: ${randomResponse.amount}\n`;
+          resultText += `📅 Following Payment: ${randomResponse.nextPayment}\n`;
+          resultText += `🔖 Reference: ${randomResponse.reference}\n\n`;
+          resultText += `📱 Notification will be sent to: ${phone}`;
+          sassaResult.className = 'tiktok-result valid';
+        } else if (randomResponse.status === 'Pending') {
+          resultText = `🔄 STATUS: PENDING\n\n`;
+          resultText += `${randomResponse.message}\n`;
+          resultText += `🔖 Reference: ${randomResponse.reference}\n\n`;
+          resultText += `📱 We'll SMS you when processed`;
+          sassaResult.className = 'tiktok-result';
+        } else {
+          resultText = `❌ STATUS: REJECTED\n\n`;
+          resultText += `Reason: ${randomResponse.reason}\n`;
+          resultText += `⏳ Appeal Deadline: ${randomResponse.appealDeadline}\n`;
+          resultText += `🔖 Reference: ${randomResponse.reference}\n\n`;
+          resultText += `📞 Call 0800 60 10 11 to appeal`;
+          sassaResult.className = 'tiktok-result error';
+        }
+        
+        sassaResult.textContent = resultText;
+        showToast('SASSA status checked', '🔍');
+      }, 1500);
+    });
+
+    // Format ID number input
+    sassaID.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^\d]/g, '').slice(0, 13);
+    });
+
+    // Format phone number input
+    sassaPhone.addEventListener('input', function(e) {
+      this.value = this.value.replace(/[^\d]/g, '').slice(0, 10);
+    });
+
+    // AI Chatbot Functionality
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotContainer = document.getElementById('chatbotContainer');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+    const chatbotStatus = document.getElementById('chatbotStatus');
+    
+    let isChatbotOpen = false;
+    
+    // Toggle chatbot visibility
+    chatbotToggle.addEventListener('click', () => {
+      isChatbotOpen = !isChatbotOpen;
+      chatbotContainer.classList.toggle('active', isChatbotOpen);
+    });
+    
+    // Send message function
+    function sendMessage() {
+      const message = chatbotInput.value.trim();
+      if (message === '') return;
+      
+      // Add user message
+      addMessage(message, 'user');
+      chatbotInput.value = '';
+      
+      // Simulate typing indicator
+      const typingIndicator = addTypingIndicator();
+      
+      // Process message and generate response (simulated AI)
+      setTimeout(() => {
+        removeTypingIndicator(typingIndicator);
+        const response = generateAIResponse(message);
+        addMessage(response, 'bot');
+      }, 1000 + Math.random() * 2000);
+    }
+    
+    // Add message to chat
+    function addMessage(text, sender) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('message', `${sender}-message`);
+      messageDiv.textContent = text;
+      chatbotMessages.appendChild(messageDiv);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+    
+    // Add typing indicator
+    function addTypingIndicator() {
+      const typingDiv = document.createElement('div');
+      typingDiv.classList.add('message', 'bot-message');
+      typingDiv.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+      typingDiv.id = 'typingIndicator';
+      chatbotMessages.appendChild(typingDiv);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      return typingDiv;
+    }
+    
+    // Remove typing indicator
+    function removeTypingIndicator(indicator) {
+      indicator.remove();
+    }
+    
+    // Generate AI response
+    function generateAIResponse(message) {
+      const lowerMessage = message.toLowerCase();
+      
+      // ID Generation Help
+      if (lowerMessage.includes('generate') || lowerMessage.includes('create')) {
+        return "To generate IDs, use the main interface. Set your parameters (birth date, gender, province) and click 'Generate' or use the Auto-Generate bot for continuous generation.";
+      }
+      
+      // ID Validation Help
+      if (lowerMessage.includes('valid') || lowerMessage.includes('verify')) {
+        return "Our system automatically validates IDs using the Luhn algorithm. Green IDs are valid, red are duplicates. You can also check SASSA status in the SASSA tab.";
+      }
+      
+      // SASSA Help
+      if (lowerMessage.includes('sassa') || lowerMessage.includes('grant')) {
+        return "The SASSA tab lets you check grant status by entering an ID and phone number. This simulates checking with the official SASSA system.";
+      }
+      
+      // Favorites Help
+      if (lowerMessage.includes('favorite') || lowerMessage.includes('save')) {
+        return "Click the star (☆) on any ID to save it to favorites. Access all favorites in the Favorites tab. Favorites persist between sessions.";
+      }
+      
+      // Export Help
+      if (lowerMessage.includes('export') || lowerMessage.includes('download')) {
+        return "You can export all generated IDs or just favorites as CSV or JSON. Use the export buttons at the bottom of each relevant tab.";
+      }
+      
+      // Default responses
+      const defaultResponses = [
+        "I can help with ID generation, validation, SASSA checks, and more. What specifically would you like to know?",
+        "For ID generation, please use the main interface. I can answer questions about the process.",
+        "Try asking about: 'How to generate IDs', 'How to check if an ID is valid', or 'How to save favorites'.",
+        "I'm your Cyber ID assistant. Ask me anything about South African ID numbers and the SASSA system."
+      ];
+      
+      return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    }
+    
+    // Event listeners for chatbot
+    chatbotSend.addEventListener('click', sendMessage);
+    chatbotInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+    
+    // Initial bot greeting
+    setTimeout(() => {
+      addMessage("I can help you with: ID generation, validation, SASSA status checks, and more. Try asking a question!", 'bot');
+    }, 1500);
+  </script>
+</body>
+</html>
